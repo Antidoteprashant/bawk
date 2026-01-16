@@ -6,9 +6,9 @@ const categories = [
     { id: 1, name: 'Action Figures', image: placeholder },
     { id: 2, name: 'Wooden Katana', image: placeholder },
     { id: 3, name: 'Keychains', image: placeholder },
-    { id: 4, name: 'Apparel', image: placeholder },
+    // { id: 4, name: 'Apparel', image: placeholder },
     { id: 5, name: 'Mousepads', image: placeholder },
-    { id: 6, name: 'Cosplay', image: placeholder },
+    { id: 6, name: 'WATCH', image: placeholder },
 ];
 
 const CategoryGrid = () => {
