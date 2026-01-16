@@ -86,7 +86,7 @@ const Checkout = ({ cart, clearCart }) => {
         // FOR DEMO: We will just open the Razorpay modal with client-side options
         // IMPORTANT: Replace 'YOUR_RAZORPAY_KEY' with your actual test key id
         const options = {
-            key: "YOUR_RAZORPAY_KEY_ID", // Enter the Key ID generated from the Dashboard
+            key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
             amount: totalPrice * 100, // Amount in paise
             currency: "INR",
             name: "The Mimicon",
