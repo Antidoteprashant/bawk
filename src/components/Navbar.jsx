@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ cartCount, onOpenCart }) => {
@@ -6,13 +6,13 @@ const Navbar = ({ cartCount, onOpenCart }) => {
     <nav className="navbar">
       <div className="container navbar-container">
         <div className="navbar-logo">
-          <a href="/">THE MIMICON</a>
+          <Link to="/">BAWK</Link>
         </div>
         <ul className="navbar-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#categories">Categories</a></li>
-          <li><a href="#sale" className="highlight-red">Sale</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/categories">Categories</Link></li>
+          <li><Link to="/sale" className="highlight-red">Sale</Link></li>
+          <li><Link to="/blog">Blog</Link></li>
         </ul>
         <div className="navbar-icons">
           <button className="icon-btn search-icon" aria-label="Search">

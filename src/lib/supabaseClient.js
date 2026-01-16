@@ -1,8 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
+import { config } from '../env';
+
 // Access environment variables
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = config.VITE_SUPABASE_URL;
+const supabaseAnonKey = config.VITE_SUPABASE_ANON_KEY;
 
 // Create a client with error handling implementation
 let supabaseClient;

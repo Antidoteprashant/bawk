@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CategoryGrid from './components/CategoryGrid';
@@ -8,13 +8,20 @@ import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import Checkout from './components/Checkout';
 
+// Pages
+import Categories from './pages/Categories';
+import Sale from './pages/Sale';
+import Blog from './pages/Blog';
+
 // Admin Imports
 import AdminLayout from './admin/AdminLayout';
 import AdminDashboard from './admin/AdminDashboard';
 import AddProduct from './admin/AddProduct';
+import AdminOrders from './admin/AdminOrders';
+import AdminUsers from './admin/AdminUsers';
 
 // Main content component to keep the landing page clean
-const LandingPage = ({ addToCart }) => (
+const LandingPage = ({ addToCart, buyNow }) => (
   <>
     <Hero />
     <CategoryGrid />
@@ -22,25 +29,30 @@ const LandingPage = ({ addToCart }) => (
       title="Top Sale This Week"
       id="top-sale"
       addToCart={addToCart}
+      buyNow={buyNow}
     />
     <ProductSection
       title="Featured Products"
       id="featured"
       addToCart={addToCart}
+      buyNow={buyNow}
     />
     <ProductSection
       title="Sale Products"
       id="sale"
       addToCart={addToCart}
+      buyNow={buyNow}
     />
 
     <section className="section">
-      <div className="container" style={{ display: 'flex', gap: '2rem' }}>
-        <div style={{ flex: 1, height: '300px', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
-          <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff' }}>Otaku Threads</h3>
+      <div className="container" style={{ display: 'flex', gap: '2rem', flexDirection: 'column' }}>
+        <div style={{ flex: 1, padding: '2rem', background: '#222', borderRadius: '8px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff', marginBottom: '0.5rem' }}>Otaku Threads</h3>
+          <p style={{ color: '#aaa' }}>Premium Anime Apparel</p>
         </div>
-        <div style={{ flex: 1, height: '300px', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
-          <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff' }}>Epic Wrap</h3>
+        <div style={{ flex: 1, padding: '2rem', background: '#222', borderRadius: '8px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff', marginBottom: '0.5rem' }}>Epic Wrap</h3>
+          <p style={{ color: '#aaa' }}>Custom Anime Skins</p>
         </div>
       </div>
     </section>
@@ -51,14 +63,6 @@ function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Note: We need to move Router up to handle useNavigate, 
-  // but for simplicity in this structure we will keep state here and pass it down 
-  // or restructure to use a Layout component.
-
-  // To correctly handle the conditional rendering of Navbar/Footer for admin,
-  // we should check the path. Since App is inside Router in index.js (usually), but here App wraps Router.
-  // We will split this component.
-
   return (
     <Router>
       <Routes>
@@ -67,6 +71,8 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="products" element={<AdminDashboard />} />
           <Route path="products/new" element={<AddProduct />} />
+          <Route path="orders" element={<AdminOrders />} />
+          <Route path="users" element={<AdminUsers />} />
         </Route>
 
         {/* Public Routes */}
@@ -80,7 +86,7 @@ function App() {
 function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
   const navigate = useNavigate();
 
-  const addToCart = (product) => {
+  const addToCart = (product, openDrawer = true) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
       if (existingItem) {
@@ -91,7 +97,12 @@ function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
-    setIsCartOpen(true);
+    if (openDrawer) setIsCartOpen(true);
+  };
+
+  const buyNow = (product) => {
+    addToCart(product, false);
+    navigate('/checkout');
   };
 
   const removeFromCart = (productId) => {
@@ -119,7 +130,10 @@ function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
       />
 
       <Routes>
-        <Route path="/" element={<LandingPage addToCart={addToCart} />} />
+        <Route path="/" element={<LandingPage addToCart={addToCart} buyNow={buyNow} />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/sale" element={<Sale addToCart={addToCart} buyNow={buyNow} />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
       </Routes>
 
@@ -127,5 +141,6 @@ function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
     </div>
   );
 }
+
 
 export default App;

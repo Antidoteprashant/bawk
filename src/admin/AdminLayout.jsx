@@ -7,7 +7,7 @@ const AdminLayout = () => {
         <div className="admin-layout">
             <aside className="admin-sidebar">
                 <div className="admin-brand">
-                    MIMICON ADMIN
+                    BAWK
                 </div>
                 <nav className="admin-nav">
                     <NavLink to="/admin" end className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
@@ -18,6 +18,9 @@ const AdminLayout = () => {
                     </NavLink>
                     <NavLink to="/admin/orders" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
                         Orders
+                    </NavLink>
+                    <NavLink to="/admin/users" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
+                        Users
                     </NavLink>
                     <NavLink to="/" className="admin-nav-link">
                         View Live Site

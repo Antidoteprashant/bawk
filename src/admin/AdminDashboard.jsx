@@ -27,6 +27,22 @@ const AdminDashboard = () => {
         setLoading(false);
     };
 
+    const deleteProduct = async (id) => {
+        if (!window.confirm("Are you sure you want to delete this product?")) return;
+
+        const { error } = await supabase
+            .from('products')
+            .delete()
+            .eq('id', id);
+
+        if (error) {
+            alert("Error deleting product");
+            console.error(error);
+        } else {
+            setProducts(products.filter(p => p.id !== id));
+        }
+    };
+
     return (
         <div>
             <div className="admin-header">
@@ -73,7 +89,7 @@ const AdminDashboard = () => {
                                     </td>
                                     <td>
                                         <button style={{ marginRight: '0.5rem' }}>Edit</button>
-                                        <button style={{ color: '#e53935' }}>Delete</button>
+                                        <button style={{ color: '#e53935' }} onClick={() => deleteProduct(product.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))

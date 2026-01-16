@@ -3,7 +3,8 @@
   --color-bg-secondary: #547792;
   --color-text-primary: #ffffff;
   --color-text-secondary: #b3b3b3;
-  --color-accent-blue: #00bcd4; /* Cyan/Blue-ish seen in nav often */
+  --color-accent-blue: #00bcd4;
+  /* Cyan/Blue-ish seen in nav often */
   --color-accent-red: #e53935;
   --color-accent-yellow: #ffc107;
   --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;

@@ -59,7 +59,7 @@ SELECT
   1299.00, 
   1999.00, 
   id, 
-  'https://via.placeholder.com/300?text=Zoro+Figure',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw7OPfKe8Xg_hU3sbxtSnDJisqqqHtngu_Xw&s',
   TRUE,
   50
 FROM categories WHERE slug = 'action-figures';
@@ -71,7 +71,7 @@ SELECT
   1599.00, 
   2499.00, 
   id, 
-  'https://via.placeholder.com/300?text=Luffy+Gear+5',
+  'https://www.masioriginals.com/cdn/shop/files/1_bcf0f65d-47bb-476f-83c3-58a06dd02b7b.jpg?v=1753435528&width=1946',
   TRUE,
   30
 FROM categories WHERE slug = 'action-figures';
