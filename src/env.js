@@ -9,7 +9,7 @@ const env = envSchema.safeParse(import.meta.env);
 
 if (!env.success) {
     console.error("❌ Invalid environment variables:", env.error.format());
-    throw new Error("Invalid environment variables");
+    // Don't throw, so the app can at least start and show specific error UI where needed
 }
 
-export const config = env.data;
+export const config = env.success ? env.data : {};
