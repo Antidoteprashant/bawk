@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CategoryGrid from './components/CategoryGrid';
@@ -7,6 +7,11 @@ import ProductSection from './components/ProductSection';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import Checkout from './components/Checkout';
+
+// Admin Imports
+import AdminLayout from './admin/AdminLayout';
+import AdminDashboard from './admin/AdminDashboard';
+import AddProduct from './admin/AddProduct';
 
 // Main content component to keep the landing page clean
 const LandingPage = ({ addToCart }) => (
@@ -42,9 +47,37 @@ const LandingPage = ({ addToCart }) => (
   </>
 );
 
-function AppContent() {
+function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Note: We need to move Router up to handle useNavigate, 
+  // but for simplicity in this structure we will keep state here and pass it down 
+  // or restructure to use a Layout component.
+
+  // To correctly handle the conditional rendering of Navbar/Footer for admin,
+  // we should check the path. Since App is inside Router in index.js (usually), but here App wraps Router.
+  // We will split this component.
+
+  return (
+    <Router>
+      <Routes>
+        {/* Admin Routes - No Public Navbar/Footer */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="products" element={<AdminDashboard />} />
+          <Route path="products/new" element={<AddProduct />} />
+        </Route>
+
+        {/* Public Routes */}
+        <Route path="/*" element={<PublicLayout cart={cart} setCart={setCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
+      </Routes>
+    </Router>
+  );
+}
+
+// Wrapper for public site to handle shared state like Cart
+function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
   const navigate = useNavigate();
 
   const addToCart = (product) => {
@@ -66,10 +99,6 @@ function AppContent() {
   };
 
   const clearCart = () => setCart([]);
-
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
 
   const handleCheckout = () => {
     setIsCartOpen(false);
@@ -96,14 +125,6 @@ function AppContent() {
 
       <Footer />
     </div>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
   );
 }
 

@@ -7,9 +7,9 @@ const Footer = () => {
             <div className="container footer-container">
                 <div className="footer-col">
                     <h3>Contact Us</h3>
-                    <p>The Mimicon</p>
-                    <p>Ranchi, Jharkhand</p>
-                    <p className="footer-contact">support@themimicon.com</p>
+                    <p>BAWK</p>
+                    <p>MP GWALIOR </p>
+                    <p className="footer-contact">support@bawk.com</p>
                     <p className="footer-contact">+91 000 000 0000</p>
                     <div className="social-links">
                         <span>FB</span>
@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
             <div className="footer-bottom">
                 <div className="container">
-                    <p>&copy; 2024 The Mimicon. All Rights Reserved.</p>
+                    <p>&copy; 2024 BAWK. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>
