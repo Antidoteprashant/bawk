@@ -1,11 +1,12 @@
 .navbar {
-    background-color: rgba(15, 15, 15, 0.95);
-    backdrop-filter: blur(10px);
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid var(--color-bg-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 0;
+    transition: all 0.3s ease;
 }
 
 .navbar-container {
@@ -15,30 +16,62 @@
 }
 
 .navbar-logo a {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: var(--color-text-primary);
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
     text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 230, 255, 0.5);
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-logo a:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(0, 230, 255, 0.8), 0 0 40px rgba(0, 230, 255, 0.4);
 }
 
 .navbar-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .navbar-links a {
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.95rem;
     text-transform: uppercase;
+    color: #ccc;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent-blue);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 8px var(--color-accent-blue);
 }
 
 .navbar-links a:hover {
-    color: var(--color-accent-blue);
+    color: #fff;
+}
+
+.navbar-links a:hover::after {
+    width: 100%;
 }
 
 .highlight-red {
     color: var(--color-accent-red) !important;
+}
+
+.highlight-red::after {
+    background-color: var(--color-accent-red) !important;
+    box-shadow: 0 0 8px var(--color-accent-red) !important;
 }
 
 .navbar-icons {
@@ -48,27 +81,57 @@
 }
 
 .icon-btn {
-    color: var(--color-text-primary);
-    transition: color 0.3s;
+    color: #ddd;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-btn:hover {
-    color: var(--color-accent-blue);
+    color: #fff;
+    background: var(--color-accent-blue);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+}
+
+.icon-btn:active {
+    transform: scale(0.95);
 }
 
 .cart-badge {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -5px;
+    right: -5px;
     background-color: var(--color-accent-red);
     color: white;
-    font-size: 0.7rem;
-    width: 18px;
-    height: 18px;
+    font-size: 0.75rem;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    border: 2px solid #1a1a1a;
+    animation: bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
