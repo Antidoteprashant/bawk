@@ -13,7 +13,11 @@ const AddProduct = () => {
         original_price: '',
         category_id: '',
         image_url: '',
-        stock: 10,
+        stock: '',
+        weight: '',
+        height: '',
+        breadth: '',
+        length: '',
         is_featured: false
     });
 
@@ -44,7 +48,12 @@ const AddProduct = () => {
                 .insert([{
                     ...formData,
                     price: parseFloat(formData.price),
-                    original_price: formData.original_price ? parseFloat(formData.original_price) : null
+                    original_price: formData.original_price ? parseFloat(formData.original_price) : null,
+                    stock: formData.stock ? parseInt(formData.stock) : 0,
+                    weight: formData.weight ? parseFloat(formData.weight) : null,
+                    height: formData.height ? parseFloat(formData.height) : null,
+                    breadth: formData.breadth ? parseFloat(formData.breadth) : null,
+                    length: formData.length ? parseFloat(formData.length) : null
                 }]);
 
             if (error) throw error;
@@ -138,6 +147,77 @@ const AddProduct = () => {
                         value={formData.description}
                         onChange={handleChange}
                     ></textarea>
+                </div>
+
+                {/* Stock Count */}
+                <div className="form-group">
+                    <label>Stock Count</label>
+                    <input
+                        type="number"
+                        name="stock"
+                        className="form-input"
+                        value={formData.stock}
+                        onChange={handleChange}
+                        placeholder="Enter available stock quantity"
+                        min="0"
+                    />
+                </div>
+
+                {/* Product Dimensions */}
+                <h3 style={{ color: '#888', marginBottom: '1rem', marginTop: '1.5rem', fontSize: '1rem', textTransform: 'uppercase' }}>Product Dimensions</h3>
+                <div className="form-group-row" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <div className="form-group" style={{ flex: '1 1 45%' }}>
+                        <label>Weight (kg)</label>
+                        <input
+                            type="number"
+                            name="weight"
+                            className="form-input"
+                            value={formData.weight}
+                            onChange={handleChange}
+                            placeholder="e.g. 0.5"
+                            step="0.01"
+                            min="0"
+                        />
+                    </div>
+                    <div className="form-group" style={{ flex: '1 1 45%' }}>
+                        <label>Length (cm)</label>
+                        <input
+                            type="number"
+                            name="length"
+                            className="form-input"
+                            value={formData.length}
+                            onChange={handleChange}
+                            placeholder="e.g. 30"
+                            step="0.1"
+                            min="0"
+                        />
+                    </div>
+                    <div className="form-group" style={{ flex: '1 1 45%' }}>
+                        <label>Breadth (cm)</label>
+                        <input
+                            type="number"
+                            name="breadth"
+                            className="form-input"
+                            value={formData.breadth}
+                            onChange={handleChange}
+                            placeholder="e.g. 20"
+                            step="0.1"
+                            min="0"
+                        />
+                    </div>
+                    <div className="form-group" style={{ flex: '1 1 45%' }}>
+                        <label>Height (cm)</label>
+                        <input
+                            type="number"
+                            name="height"
+                            className="form-input"
+                            value={formData.height}
+                            onChange={handleChange}
+                            placeholder="e.g. 10"
+                            step="0.1"
+                            min="0"
+                        />
+                    </div>
                 </div>
 
                 <div className="form-group">
