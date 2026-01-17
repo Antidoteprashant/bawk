@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../../src/lib/supabaseClient';
 import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
         <div>
             <div className="admin-header">
                 <h1 className="admin-title">Products</h1>
-                <Link to="/admin/products/new" className="btn-primary">
+                <Link to="/products/new" className="btn-primary">
                     + Add Product
                 </Link>
             </div>

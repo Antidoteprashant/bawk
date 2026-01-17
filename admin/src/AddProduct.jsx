@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../../src/lib/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
@@ -50,7 +50,7 @@ const AddProduct = () => {
             if (error) throw error;
 
             alert('Product added successfully!');
-            navigate('/admin/products');
+            navigate('/products');
         } catch (error) {
             alert('Error adding product: ' + error.message);
         } finally {

@@ -10,21 +10,21 @@ const AdminLayout = () => {
                     BAWK
                 </div>
                 <nav className="admin-nav">
-                    <NavLink to="/admin" end className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
+                    <NavLink to="/" end className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
                         Dashboard
                     </NavLink>
-                    <NavLink to="/admin/products" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
+                    <NavLink to="/products" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
                         Products
                     </NavLink>
-                    <NavLink to="/admin/orders" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
+                    <NavLink to="/orders" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
                         Orders
                     </NavLink>
-                    <NavLink to="/admin/users" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
+                    <NavLink to="/users" className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}>
                         Users
                     </NavLink>
-                    <NavLink to="/" className="admin-nav-link">
+                    <a href="/" className="admin-nav-link">
                         View Live Site
-                    </NavLink>
+                    </a>
                 </nav>
                 <div className="admin-user">
                     <div className="avatar">A</div>

@@ -13,12 +13,7 @@ import Categories from './pages/Categories';
 import Sale from './pages/Sale';
 import Blog from './pages/Blog';
 
-// Admin Imports
-import AdminLayout from './admin/AdminLayout';
-import AdminDashboard from './admin/AdminDashboard';
-import AddProduct from './admin/AddProduct';
-import AdminOrders from './admin/AdminOrders';
-import AdminUsers from './admin/AdminUsers';
+
 
 // Main content component to keep the landing page clean
 const LandingPage = ({ addToCart, buyNow }) => {
@@ -67,14 +62,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Admin Routes - No Public Navbar/Footer */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="products" element={<AdminDashboard />} />
-          <Route path="products/new" element={<AddProduct />} />
-          <Route path="orders" element={<AdminOrders />} />
-          <Route path="users" element={<AdminUsers />} />
-        </Route>
+
 
         {/* Public Routes */}
         <Route path="/*" element={<PublicLayout cart={cart} setCart={setCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
