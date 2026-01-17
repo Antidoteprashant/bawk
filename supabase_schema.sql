@@ -45,7 +45,7 @@ ON products FOR ALL USING (auth.role() = 'authenticated');
 -- Insert some default categories
 INSERT INTO categories (name, slug) VALUES 
 ('Action Figures', 'action-figures'),
-('Apparel', 'apparel'),
+('WATCH', 'WATCH'),
 ('Keychains', 'keychains'),
 ('Mousepads', 'mousepads'),
 ('Swords', 'swords'),
