@@ -11,7 +11,7 @@ const Navbar = ({ cartCount, onOpenCart }) => {
         <ul className="navbar-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/categories">Categories</Link></li>
-          <li><Link to="/sale" className="highlight-red">Sale</Link></li>
+          <li><Link to="/track-order">Track Order</Link></li>
           <li><Link to="/blog">Blog</Link></li>
         </ul>
         <div className="navbar-icons">
