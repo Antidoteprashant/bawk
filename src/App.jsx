@@ -11,7 +11,6 @@ import OrderTracking from './components/OrderTracking';
 
 // Pages
 import Categories from './pages/Categories';
-import Sale from './pages/Sale';
 import Blog from './pages/Blog';
 
 
@@ -122,7 +121,6 @@ function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
       <Routes>
         <Route path="/" element={<LandingPage addToCart={addToCart} buyNow={buyNow} />} />
         <Route path="/categories" element={<Categories addToCart={addToCart} buyNow={buyNow} />} />
-        <Route path="/sale" element={<Sale addToCart={addToCart} buyNow={buyNow} />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
         <Route path="/track-order" element={<OrderTracking />} />

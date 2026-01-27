@@ -1,50 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
 
 const Footer = () => {
+    const [email, setEmail] = useState('');
+
+    const handleSubscribe = (e) => {
+        e.preventDefault();
+        if (email) {
+            alert('Thank you for subscribing!');
+            setEmail('');
+        }
+    };
+
     return (
         <footer className="footer" id="footer">
-            <div className="container footer-container">
-                <div className="footer-col">
-                    <h3>Contact Us</h3>
-                    <p>BAWK</p>
-                    <p>MP GWALIOR </p>
-                    <p className="footer-contact">support@bawk.com</p>
-                    <p className="footer-contact">+91 000 000 0000</p>
-                    <div className="social-links">
-                        <span>FB</span>
-                        <span>IG</span>
-                        <span>TW</span>
+            {/* Main Footer Content */}
+            <div className="container footer-main">
+                <div className="footer-grid">
+                    {/* Shop Section */}
+                    <div className="footer-col">
+                        <h3>SHOP</h3>
+                        <ul>
+                            <li><a href="/categories">BAWK</a></li>
+                        </ul>
                     </div>
-                </div>
-                <div className="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Delivery & Payment</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-                <div className="footer-col">
-                    <h3>Our Services</h3>
-                    <ul>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order History</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                    </ul>
-                </div>
-                <div className="footer-col">
-                    <h3>Our Store</h3>
-                    <div className="map-placeholder">
-                        Map Location Placeholder
+
+                    {/* Legal Section */}
+                    <div className="footer-col">
+                        <h3>LEGAL</h3>
+                        <ul>
+                            <li><a href="/refund-policy">Refund Policy</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="/contact">Contact Information</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Headquarters Section */}
+                    <div className="footer-col">
+                        <h3>HEADQUARTERS</h3>
+                        <p className="hq-address">vinay nagar sec-2</p>
+                        <a href="mailto:rogerprashant72@gmail.com" className="hq-link">rogerprashant72@gmail.com</a>
+                        <a href="tel:+918446692339" className="hq-link">+91 8446692339</a>
                     </div>
                 </div>
             </div>
+
+            {/* Subscribe Section */}
+            <div className="footer-subscribe-section">
+                <h4>Subscribe to our emails</h4>
+                <form className="subscribe-form" onSubmit={handleSubscribe}>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <button type="submit" aria-label="Subscribe">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </form>
+
+                {/* Social Icon */}
+                <div className="footer-social">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <rect x="2" y="2" width="20" height="20" rx="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            {/* Footer Bottom */}
             <div className="footer-bottom">
                 <div className="container">
-                    <p>&copy; 2024 BAWK. All Rights Reserved.</p>
+                    <p>© 2026, BAWK</p>
+                    {/* <div className="footer-bottom-links">
+                        <a href="/privacy-policy">Privacy policy</a>
+                        <a href="/terms">Terms of service</a>
+                        <a href="/shipping">Shipping policy</a>
+                        <a href="/refund-policy">Refund policy</a>
+                        <a href="/contact">Contact Information</a>
+                    </div> */}
                 </div>
             </div>
         </footer>
