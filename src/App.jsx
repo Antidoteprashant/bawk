@@ -7,6 +7,7 @@ import ProductSection from './components/ProductSection';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import Checkout from './components/Checkout';
+import OrderTracking from './components/OrderTracking';
 
 // Pages
 import Categories from './pages/Categories';
@@ -124,6 +125,7 @@ function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
         <Route path="/sale" element={<Sale addToCart={addToCart} buyNow={buyNow} />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
+        <Route path="/track-order" element={<OrderTracking />} />
       </Routes>
 
       <Footer />
