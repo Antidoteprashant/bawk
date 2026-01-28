@@ -12,7 +12,7 @@ import AdminLogin from './AdminLogin';
 const AdminApp = () => {
     return (
         <AdminAuthProvider>
-            <Router basename="/admin">
+            <Router>
                 <Routes>
                     {/* Public Route - Login */}
                     <Route path="/login" element={<AdminLogin />} />

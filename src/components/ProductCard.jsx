@@ -18,7 +18,9 @@ const ProductCard = ({ product, addToCart, buyNow }) => {
                 </div>
             </div>
             <div className="product-info">
-                <div className="product-cat">{product.categories?.name || 'Anime'}</div>
+                <div className="product-cat">
+                    {product.categories?.name.toLowerCase() === 'cosplay' ? 'WATCH' : (product.categories?.name || 'Anime')}
+                </div>
                 <h4 className="product-title">{product.name}</h4>
                 <div className="product-price">
                     {product.original_price && <span className="old-price">₹{product.original_price}</span>}

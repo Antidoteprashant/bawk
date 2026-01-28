@@ -19,8 +19,8 @@ const Blog = () => {
                 </article>
                 <article style={{ background: '#222', padding: '1.5rem', borderRadius: '8px' }}>
                     <div style={{ height: '200px', background: '#333', marginBottom: '1rem', borderRadius: '4px' }}></div>
-                    <h3>Cosplay Tips for Beginners</h3>
-                    <p style={{ color: '#aaa', margin: '0.5rem 0' }}>Start your cosplay journey with these budget-friendly tips and tricks.</p>
+                    <h3>Watch Collection Guide</h3>
+                    <p style={{ color: '#aaa', margin: '0.5rem 0' }}>Start your watch collection journey with these budget-friendly tips and tricks.</p>
                     <button style={{ marginTop: '0.5rem', background: 'none', border: 'none', color: '#ff3e6c', cursor: 'pointer', fontWeight: 'bold' }}>Read More &rarr;</button>
                 </article>
             </div>

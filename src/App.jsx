@@ -11,13 +11,13 @@ import OrderTracking from './components/OrderTracking';
 
 // Pages
 import Categories from './pages/Categories';
+import CategoryDetail from './pages/CategoryDetail';
 import Blog from './pages/Blog';
 
 
 
 // Main content component to keep the landing page clean
 const LandingPage = ({ addToCart, buyNow }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <>
@@ -25,32 +25,26 @@ const LandingPage = ({ addToCart, buyNow }) => {
       <CategoryGrid
         addToCart={addToCart}
         buyNow={buyNow}
-        selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
       />
 
-      {!selectedCategory && (
-        <>
-          <ProductSection
-            title="Featured Products"
-            id="featured"
-            addToCart={addToCart}
-            buyNow={buyNow}
-          />
-          <section className="section">
-            <div className="container" style={{ display: 'flex', gap: '2rem', flexDirection: 'column' }}>
-              <div style={{ flex: 1, padding: '2rem', background: '#222', borderRadius: '8px', textAlign: 'center' }}>
-                <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff', marginBottom: '0.5rem' }}>Otaku Threads</h3>
-                <p style={{ color: '#aaa' }}>Premium Anime Apparel</p>
-              </div>
-              <div style={{ flex: 1, padding: '2rem', background: '#222', borderRadius: '8px', textAlign: 'center' }}>
-                <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff', marginBottom: '0.5rem' }}>Epic Wrap</h3>
-                <p style={{ color: '#aaa' }}>Custom Anime Skins</p>
-              </div>
-            </div>
-          </section>
-        </>
-      )}
+      <ProductSection
+        title="Featured Products"
+        id="featured"
+        addToCart={addToCart}
+        buyNow={buyNow}
+      />
+      <section className="section">
+        <div className="container" style={{ display: 'flex', gap: '2rem', flexDirection: 'column' }}>
+          <div style={{ flex: 1, padding: '2rem', background: '#222', borderRadius: '8px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff', marginBottom: '0.5rem' }}>Otaku Threads</h3>
+            <p style={{ color: '#aaa' }}>Premium Anime Apparel</p>
+          </div>
+          <div style={{ flex: 1, padding: '2rem', background: '#222', borderRadius: '8px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '2rem', textTransform: 'uppercase', color: '#fff', marginBottom: '0.5rem' }}>Epic Wrap</h3>
+            <p style={{ color: '#aaa' }}>Custom Anime Skins</p>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
@@ -121,6 +115,7 @@ function PublicLayout({ cart, setCart, isCartOpen, setIsCartOpen }) {
       <Routes>
         <Route path="/" element={<LandingPage addToCart={addToCart} buyNow={buyNow} />} />
         <Route path="/categories" element={<Categories addToCart={addToCart} buyNow={buyNow} />} />
+        <Route path="/category/:categoryId" element={<CategoryDetail addToCart={addToCart} buyNow={buyNow} />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
         <Route path="/track-order" element={<OrderTracking />} />
