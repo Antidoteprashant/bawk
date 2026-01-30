@@ -449,7 +449,7 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.product-image {
+.order-tracking-page .product-image {
     width: 80px;
     height: 80px;
     border-radius: 8px;
